@@ -13,7 +13,7 @@ prefix = 'http://openaccess.thecvf.com/'
 def get_pdf(data):
     href, title, root_dir = data
     name = re.sub(r'[\\/:*?"<>|]', ' ', title) 
-    if os.path.isfile("{}/{}".format(root_dir, name)):
+    if os.path.isfile("{}/{}.pdf".format(root_dir, name)):
         print("File already exsists, skip %s" % name)
         return
     try:
