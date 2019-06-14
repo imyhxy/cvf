@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 import traceback
 import re
 import os
+import argparse
 
 conf_list = ['CVPR2019']
 
@@ -30,7 +31,10 @@ def conf_name(name, num):
         yield name
 
 if __name__ == '__main__':
-    pool = Pool(10)
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-t', type=int, default=10)
+    args = parser.parse_args()
+    pool = Pool(args.t)
     for conf in conf_list:
         if not os.path.exists(conf):
             os.mkdir(conf)
